@@ -44,6 +44,11 @@ class ViewController: UIViewController {
             distortionSlider.flip()
         }
     }
+    @IBOutlet weak var amplitudeSlider: UISlider! {
+        didSet {
+            amplitudeSlider.flip()
+        }
+    }
 
     @IBOutlet weak var currentOctaveLabel: UILabel!
     
@@ -167,6 +172,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func didChangeAmplitude(_ sender: AnyObject) {
+        if let slider = sender as? UISlider {
+            emitter?.oscillator()?.amplitude = Double(slider.value)
+        }
+    }
     
 }
 

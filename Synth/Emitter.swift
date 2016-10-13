@@ -36,8 +36,8 @@ class Emitter {
         self.baseFrequency = base
         self.octave = octave
         
-        oscillators[AKTableType.square] = AKOscillator(waveform: AKTable(.square), amplitude: 0.1)
-        oscillators[AKTableType.triangle] = AKOscillator(waveform: AKTable(.triangle), amplitude: 0.1)
+        oscillators[AKTableType.square] = AKOscillator(waveform: AKTable(.square), amplitude: 0)
+        oscillators[AKTableType.triangle] = AKOscillator(waveform: AKTable(.triangle), amplitude: 0)
         
         self.waveform = waveform
         recalculateFrequency()
@@ -50,7 +50,12 @@ class Emitter {
     
     func changeWaveform(waveform: AKTableType) {
         self.oscillator()?.stop()
+        
+        let previousAmplitude = self.oscillator()?.amplitude ?? 0.1
+        
         self.waveform = waveform
+        
+        self.oscillator()?.amplitude = previousAmplitude
         self.oscillator()?.start()
     }
     
