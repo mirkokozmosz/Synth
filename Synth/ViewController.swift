@@ -9,36 +9,74 @@
 import UIKit
 import AudioKit
 
+extension UISlider {
+    func flip() {
+        self.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+    }
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var pitchSlider: UISlider! {
         didSet {
-            pitchSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+            pitchSlider.flip()
         }
     }
     @IBOutlet weak var fineSlider: UISlider! {
         didSet {
-            fineSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+            fineSlider.flip()
+        }
+    }
+    @IBOutlet weak var cutoffSlider: UISlider! {
+        didSet {
+            cutoffSlider.flip()
         }
     }
     
-    @IBOutlet weak var currentOctaveLabel: UILabel!
+    @IBOutlet weak var resonanceSlider: UISlider! {
+        didSet {
+            resonanceSlider.flip()
+        }
+    }
+    
+    @IBOutlet weak var distortionSlider: UISlider! {
+        didSet {
+            distortionSlider.flip()
+        }
+    }
 
+    @IBOutlet weak var currentOctaveLabel: UILabel!
+    
     var oscillator = AKOscillator(
         waveform: AKTable(.square, size: 16),
         frequency: 261.6,
         amplitude: 0.1)
     var currentOctave = 0.0
+    var filter:AKRolandTB303Filter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AudioKit.output = oscillator
+        
+        setupFilter()
+        
+        AudioKit.output = filter
         AudioKit.start()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateViewConstraints()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupFilter() {
+        filter = AKRolandTB303Filter(oscillator)
+        filter?.cutoffFrequency = 10000
+        filter?.distortion = 0
     }
     
     @IBAction func didChangeOctave(_ sender: AnyObject) {
@@ -81,5 +119,23 @@ class ViewController: UIViewController {
     @IBAction func didPressStop(_ sender: AnyObject) {
         oscillator.stop()
     }
+    
+    @IBAction func didChangeCutoff(_ sender: AnyObject) {
+        if let slider = sender as? UISlider {
+            let max = 10000
+            let total = max / 24
+            self.filter?.cutoffFrequency = slider.value * total
+        }
+    }
+    
+    @IBAction func didChangeResonance(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func didChangeDistortion(_ sender: AnyObject) {
+        
+    }
+    
+    
 }
 
