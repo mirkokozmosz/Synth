@@ -158,7 +158,7 @@
                                             <action selector="didChangeCutoff:" destination="BYZ-38-t0r" eventType="valueChanged" id="e42-hx-sD7"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="aLh-4i-RqU" userLabel="Resonance">
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="aLh-4i-RqU" userLabel="Resonance">
                                         <frame key="frameInset" minX="115" minY="26" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Yt3-2K-kVh"/>
@@ -168,7 +168,7 @@
                                             <action selector="didChangeResonance:" destination="BYZ-38-t0r" eventType="valueChanged" id="KR2-av-YBe"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-DM-vT1" userLabel="Distortion">
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-DM-vT1" userLabel="Distortion">
                                         <frame key="frameInset" minX="226" minY="26" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="UHk-Kg-Ut9"/>

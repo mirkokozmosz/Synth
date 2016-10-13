@@ -77,6 +77,7 @@ class ViewController: UIViewController {
         filter = AKRolandTB303Filter(oscillator)
         filter?.cutoffFrequency = 10000
         filter?.distortion = 0
+        filter?.resonance = 2.0 / 24.0
     }
     
     @IBAction func didChangeOctave(_ sender: AnyObject) {
@@ -122,18 +123,26 @@ class ViewController: UIViewController {
     
     @IBAction func didChangeCutoff(_ sender: AnyObject) {
         if let slider = sender as? UISlider {
-            let max = 10000
-            let total = max / 24
+            let max = 10000.0
+            let total = max / 24.0
             self.filter?.cutoffFrequency = slider.value * total
         }
     }
     
     @IBAction func didChangeResonance(_ sender: AnyObject) {
-        
+        if let slider = sender as? UISlider {
+            let max = 2.0
+            let total = max / 24.0
+            self.filter?.resonance = slider.value * total
+        }
     }
     
     @IBAction func didChangeDistortion(_ sender: AnyObject) {
-        
+        if let slider = sender as? UISlider {
+            let max = 4.0
+            let total = max / 24.0
+            self.filter?.distortion = slider.value * total
+        }
     }
     
     
