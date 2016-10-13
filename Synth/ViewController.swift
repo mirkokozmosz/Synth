@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     var oscillator = AKOscillator(
         waveform: AKTable(.square, size: 16),
         frequency: 261.6,
-        amplitude: 0.5)
+        amplitude: 0.1)
     var currentOctave = 0.0
 
     override func viewDidLoad() {
@@ -61,11 +61,10 @@ class ViewController: UIViewController {
         
     }
     
-    let baseOctaveFrequency = 55.00
-    var currentPitchSliderValue = 3
+    let baseOctaveFrequency = 61.74
     @IBAction func didChangePitch(_ sender: AnyObject) {
         if let slider = sender as? UISlider {
-            let p = slider.value
+            let p = slider.value - 11
             let f = pow(pow(2, (1/12)), p) * (baseOctaveFrequency * pow(2, (currentOctave + 2)))
             oscillator.frequency = f
         }
