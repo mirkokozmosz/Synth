@@ -7,19 +7,74 @@
 //
 
 import UIKit
+import AudioKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var pitchSlider: UISlider! {
+        didSet {
+            pitchSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+        }
+    }
+    @IBOutlet weak var fineSlider: UISlider! {
+        didSet {
+            fineSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+        }
+    }
+    
+    @IBOutlet weak var currentOctaveLabel: UILabel!
+
+    var oscillator = AKOscillator(
+        waveform: AKTable(.square, size: 16),
+        frequency: 261.6,
+        amplitude: 1)
+    var currentOctave = 0.0
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        AudioKit.output = oscillator
+        AudioKit.start()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func didChangeOctave(_ sender: AnyObject) {
+        if let stepper = sender as? UIStepper {
+            let octave = stepper.value
+            let difference = octave - currentOctave
+            
+            currentOctave = octave
+            currentOctaveLabel.text = "\(currentOctave)"
+            if difference > 0 {
+                oscillator.frequency *= 2
+            }
+            else {
+                oscillator.frequency /= 2
+            }
+        }
+    }
+    
+    @IBAction func didChangeWaveform(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func didChangePitch(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func didChangeFinePitch(_ sender: AnyObject) {
+        
+    }
+    
+    @IBAction func didPressPlay(_ sender: AnyObject) {
+        oscillator.start()
+    }
+    
+    @IBAction func didPressStop(_ sender: AnyObject) {
+        oscillator.stop()
+    }
 }
 
