@@ -47,25 +47,44 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var currentOctaveLabel: UILabel!
     
-    var oscillator = AKOscillator(
-        waveform: AKTable(.square, size: 16),
-        frequency: 261.6,
-        amplitude: 0.1)
-    var currentOctave = 0.0
+    var mixer : AKMixer?
+    var emitter : Emitter?
     var filter:AKRolandTB303Filter?
+    
+    var previousPitchModifier : Double = 0
+    var previousFinePitchModifier : Double = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        previousPitchModifier = Double(self.pitchSlider.value)
+        previousFinePitchModifier = Double(self.fineSlider.value)
         
+        setupMixer()
+        setupEmitter()
         setupFilter()
         
         AudioKit.output = filter
-        AudioKit.start()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.updateViewConstraints()
+    }
+    
+    func setupMixer() {
+        mixer = AKMixer()
+    }
+    
+    func setupEmitter() {
+        emitter = Emitter(base: 61.74, octave: 2)
+        if let oscillators = emitter?.oscillators {
+            for (_, oscillator) in oscillators {
+                mixer?.connect(oscillator)
+            }
+        }
+        
+        mixer?.start()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,7 +93,7 @@ class ViewController: UIViewController {
     }
     
     func setupFilter() {
-        filter = AKRolandTB303Filter(oscillator)
+        filter = AKRolandTB303Filter(mixer!)
         filter?.cutoffFrequency = 10000
         filter?.distortion = 0
         filter?.resonance = 2.0 / 24.0
@@ -82,43 +101,46 @@ class ViewController: UIViewController {
     
     @IBAction func didChangeOctave(_ sender: AnyObject) {
         if let stepper = sender as? UIStepper {
-            let octave = stepper.value
-            let difference = octave - currentOctave
-            
-            currentOctave = octave
-            currentOctaveLabel.text = "\(currentOctave)"
-            if difference > 0 {
-                oscillator.frequency *= 2
-            }
-            else {
-                oscillator.frequency /= 2
-            }
+            let octave = Int(stepper.value)
+            currentOctaveLabel?.text = "\(octave)"
+            emitter?.octave = octave + 2
         }
     }
     
     @IBAction func didChangeWaveform(_ sender: AnyObject) {
+        if let segmentedControl = sender as? UISegmentedControl {
+            if segmentedControl.selectedSegmentIndex == 0 {
+                emitter?.changeWaveform(waveform: .square)
+            }
+            else {
+                emitter?.changeWaveform(waveform: .triangle)
+            }
+        }
         
     }
     
-    let baseOctaveFrequency = 61.74
     @IBAction func didChangePitch(_ sender: AnyObject) {
         if let slider = sender as? UISlider {
-            let p = slider.value - 11
-            let f = pow(pow(2, (1/12)), p) * (baseOctaveFrequency * pow(2, (currentOctave + 2)))
-            oscillator.frequency = f
+            let currentModifier = Double(slider.value)
+            emitter?.halfStepsModifier += (currentModifier - previousPitchModifier)
+            previousPitchModifier = currentModifier
         }
     }
     
     @IBAction func didChangeFinePitch(_ sender: AnyObject) {
-        
+        if let slider = sender as? UISlider {
+            let currentModifier = Double(slider.value)
+            emitter?.halfStepsModifier += (currentModifier - previousFinePitchModifier)
+            previousFinePitchModifier = currentModifier
+        }
     }
     
     @IBAction func didPressPlay(_ sender: AnyObject) {
-        oscillator.start()
+        AudioKit.start()
     }
     
     @IBAction func didPressStop(_ sender: AnyObject) {
-        oscillator.stop()
+        AudioKit.stop()
     }
     
     @IBAction func didChangeCutoff(_ sender: AnyObject) {
