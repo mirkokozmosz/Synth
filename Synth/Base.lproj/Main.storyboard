@@ -34,7 +34,7 @@
                                             <action selector="didChangeWaveform:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wal-Ar-yTm"/>
                                         </connections>
                                     </segmentedControl>
-                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-I2-ky4" userLabel="Pitch Slider">
+                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="0.0" maxValue="12" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-I2-ky4" userLabel="Pitch Slider">
                                         <frame key="frameInset" minX="161" minY="20" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="0Xo-Vq-Sml"/>
