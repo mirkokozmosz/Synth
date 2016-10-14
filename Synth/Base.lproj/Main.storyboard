@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44w-AH-C5M" userLabel="Oscillator">
@@ -79,31 +79,65 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZg-j5-50L">
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-I2-ky4" userLabel="Pitch Slider">
-                                                <color key="tintColor" red="0.44220945778775039" green="0.74168592335376071" blue="0.1467233355657081" alpha="1" colorSpace="calibratedRGB"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWs-pf-eaK" userLabel="Pitch Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="0Xo-Vq-Sml"/>
-                                                    <constraint firstAttribute="height" constant="100" id="qsB-XR-NYl"/>
+                                                    <constraint firstAttribute="height" constant="100" id="co8-aN-zvL"/>
+                                                    <constraint firstAttribute="width" constant="30" id="uQL-u0-zbF"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                        <real key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startValue">
+                                                        <real key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                        <real key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="pGk-DT-6ct"/>
+                                                    <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="vQI-Qt-Cou"/>
                                                 </connections>
-                                            </slider>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQ1-zb-tUe">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="wGp-Cp-gSi" userLabel="Fine Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
-                                                <color key="tintColor" red="0.44220945779999998" green="0.74168592339999995" blue="0.1467233356" alpha="1" colorSpace="calibratedRGB"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHO-D4-QWX" userLabel="Fine Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="Ygi-Wb-pUv"/>
-                                                    <constraint firstAttribute="height" constant="100" id="ZMd-cN-paH"/>
+                                                    <constraint firstAttribute="height" constant="100" id="G7F-cd-BcT"/>
+                                                    <constraint firstAttribute="width" constant="30" id="leh-US-n1c"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startValue">
+                                                        <real key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didChangeFinePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="A3D-Z9-b8t"/>
+                                                    <action selector="didChangeFinePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="PVV-kN-cZ8"/>
                                                 </connections>
-                                            </slider>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-SL-RAG">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,14 +145,14 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="g1s-SL-RAG" firstAttribute="centerX" secondItem="wGp-Cp-gSi" secondAttribute="centerX" id="CWh-rZ-f31"/>
-                                            <constraint firstItem="wGp-Cp-gSi" firstAttribute="top" secondItem="PZg-j5-50L" secondAttribute="top" id="GvZ-h3-g5M"/>
+                                            <constraint firstItem="pWs-pf-eaK" firstAttribute="top" secondItem="PZg-j5-50L" secondAttribute="top" id="7nD-Dy-xKd"/>
+                                            <constraint firstAttribute="trailing" secondItem="xHO-D4-QWX" secondAttribute="trailing" constant="10" id="D08-cc-6xn"/>
                                             <constraint firstItem="g1s-SL-RAG" firstAttribute="bottom" secondItem="PZg-j5-50L" secondAttribute="bottom" id="HjH-I3-esY"/>
-                                            <constraint firstItem="9xI-I2-ky4" firstAttribute="leading" secondItem="PZg-j5-50L" secondAttribute="leading" constant="10" id="IAC-X2-3rh"/>
-                                            <constraint firstAttribute="trailing" secondItem="wGp-Cp-gSi" secondAttribute="trailing" constant="10" id="KLn-x5-MrP"/>
+                                            <constraint firstItem="nQ1-zb-tUe" firstAttribute="centerX" secondItem="pWs-pf-eaK" secondAttribute="centerX" id="LcH-YJ-6Ho"/>
+                                            <constraint firstItem="g1s-SL-RAG" firstAttribute="centerX" secondItem="xHO-D4-QWX" secondAttribute="centerX" id="NSp-pD-pD1"/>
                                             <constraint firstAttribute="width" constant="126" id="TLG-sz-ze2"/>
-                                            <constraint firstItem="9xI-I2-ky4" firstAttribute="top" secondItem="PZg-j5-50L" secondAttribute="top" id="aFk-KP-Oig"/>
-                                            <constraint firstItem="nQ1-zb-tUe" firstAttribute="centerX" secondItem="9xI-I2-ky4" secondAttribute="centerX" id="tog-k4-ahj"/>
+                                            <constraint firstItem="pWs-pf-eaK" firstAttribute="leading" secondItem="PZg-j5-50L" secondAttribute="leading" constant="10" id="hA8-YF-uAt"/>
+                                            <constraint firstItem="xHO-D4-QWX" firstAttribute="top" secondItem="PZg-j5-50L" secondAttribute="top" id="kdx-vr-ULC"/>
                                             <constraint firstAttribute="height" constant="126" id="vO6-Xr-y4A"/>
                                             <constraint firstItem="nQ1-zb-tUe" firstAttribute="bottom" secondItem="PZg-j5-50L" secondAttribute="bottom" id="yT7-bk-22C"/>
                                         </constraints>
@@ -146,24 +180,43 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-ak-Pyw" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
-                                        <frame key="frameInset" minX="12" minY="35" width="30" height="107.00000000000003"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xkG-sK-0cv" userLabel="Amplitude Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="Ggu-s4-J90"/>
-                                            <constraint firstAttribute="height" constant="30" id="wPJ-d6-8sb"/>
+                                            <constraint firstAttribute="height" constant="100" id="avb-B0-B1Y"/>
+                                            <constraint firstAttribute="width" constant="30" id="ltI-CL-mYq"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="startValue">
+                                                <real key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.20000000000000001"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="didChangeAmplitude:" destination="BYZ-38-t0r" eventType="valueChanged" id="YSv-po-D22"/>
+                                            <action selector="didChangeAmplitude:" destination="BYZ-38-t0r" eventType="valueChanged" id="wM1-k6-Lwg"/>
+                                            <action selector="didChangeFinePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="mwj-3p-p2z"/>
+                                            <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="K8j-UU-lHb"/>
                                         </connections>
-                                    </slider>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="1Mu-Zk-gmi" firstAttribute="leading" secondItem="EBY-j3-Mp4" secondAttribute="leading" constant="8" id="Rg9-dd-zRw"/>
-                                    <constraint firstAttribute="height" constant="200" id="Shn-1q-BWz"/>
-                                    <constraint firstItem="gzj-ak-Pyw" firstAttribute="centerY" secondItem="EBY-j3-Mp4" secondAttribute="centerY" id="VRp-RJ-qvK"/>
+                                    <constraint firstAttribute="height" constant="170" id="Shn-1q-BWz"/>
                                     <constraint firstItem="1Mu-Zk-gmi" firstAttribute="top" secondItem="EBY-j3-Mp4" secondAttribute="top" constant="8" id="bDd-kv-KeE"/>
-                                    <constraint firstItem="gzj-ak-Pyw" firstAttribute="centerX" secondItem="EBY-j3-Mp4" secondAttribute="centerX" id="fWr-qq-82P"/>
+                                    <constraint firstItem="xkG-sK-0cv" firstAttribute="centerY" secondItem="EBY-j3-Mp4" secondAttribute="centerY" constant="10" id="kSm-Dc-Nbl"/>
+                                    <constraint firstItem="xkG-sK-0cv" firstAttribute="centerX" secondItem="EBY-j3-Mp4" secondAttribute="centerX" id="xIj-Ob-R4X"/>
                                     <constraint firstAttribute="width" constant="65" id="zeE-R0-eqc"/>
                                 </constraints>
                             </view>
@@ -180,30 +233,36 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3G0-8u-b9W">
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="24" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="J8Q-kY-LTg" userLabel="Cutoff" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
-                                                <frame key="frameInset" minX="13" width="30" height="107"/>
-                                                <color key="tintColor" red="0.44220945779999998" green="0.74168592339999995" blue="0.1467233356" alpha="1" colorSpace="calibratedRGB"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H05-k9-K8L" userLabel="Cutoff Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="1F1-0m-bjT"/>
-                                                    <constraint firstAttribute="width" constant="100" id="fKw-t7-96P"/>
+                                                    <constraint firstAttribute="width" constant="30" id="5UN-Az-KK9"/>
+                                                    <constraint firstAttribute="height" constant="100" id="M51-wN-8Ax"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                        <real key="value" value="10000"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startValue">
+                                                        <real key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didChangeCutoff:" destination="BYZ-38-t0r" eventType="valueChanged" id="e42-hx-sD7"/>
+                                                    <action selector="didChangeCutoff:" destination="BYZ-38-t0r" eventType="valueChanged" id="OCj-3D-fDX"/>
+                                                    <action selector="didChangeFinePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="aHp-cw-DNX"/>
+                                                    <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="hhG-0H-LSo"/>
                                                 </connections>
-                                            </slider>
-                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="aLh-4i-RqU" userLabel="Resonance" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
-                                                <frame key="frameInset" minX="95" width="30" height="107"/>
-                                                <color key="tintColor" red="0.44220945779999998" green="0.74168592339999995" blue="0.1467233356" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="Yt3-2K-kVh"/>
-                                                    <constraint firstAttribute="width" constant="100" id="sPZ-9z-3L5"/>
-                                                </constraints>
-                                                <connections>
-                                                    <action selector="didChangeResonance:" destination="BYZ-38-t0r" eventType="valueChanged" id="KR2-av-YBe"/>
-                                                </connections>
-                                            </slider>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cutoff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQo-iQ-nrd">
-                                                <frame key="frameInset" minY="106" width="57" height="21"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cutoff" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQo-iQ-nrd">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="57" id="2hp-Dr-ii1"/>
                                                     <constraint firstAttribute="height" constant="21" id="Rzu-Vv-zbg"/>
@@ -212,8 +271,36 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Resonance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltI-Gz-qVc">
-                                                <frame key="frameInset" minX="68" minY="106" width="85" height="21"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQv-O2-thq" userLabel="Resonance Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="RUW-02-Gwc"/>
+                                                    <constraint firstAttribute="width" constant="30" id="T3z-pF-xRw"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startValue">
+                                                        <real key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didChangeFinePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="kpD-op-QrG"/>
+                                                    <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="aGx-RW-6vC"/>
+                                                    <action selector="didChangeResonance:" destination="BYZ-38-t0r" eventType="valueChanged" id="HFf-u9-YNZ"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resonance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltI-Gz-qVc">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="85" id="72q-bL-CXt"/>
                                                     <constraint firstAttribute="height" constant="21" id="qYa-65-N37"/>
@@ -222,8 +309,36 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distortion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-XW-nD6">
-                                                <frame key="frameInset" minX="170" minY="106" width="75" height="21"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqZ-0x-zro" userLabel="Distortion Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="AZr-cp-c5H"/>
+                                                    <constraint firstAttribute="height" constant="100" id="UDI-zR-dZ3"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="startValue">
+                                                        <real key="value" value="11"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didChangeDistortion:" destination="BYZ-38-t0r" eventType="valueChanged" id="BBy-QD-Dje"/>
+                                                    <action selector="didChangeFinePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="WrZ-uo-RyE"/>
+                                                    <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="0Jw-E0-aNY"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distortion" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw6-XW-nD6">
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="75" id="8On-UQ-Ugm"/>
                                                     <constraint firstAttribute="height" constant="21" id="uqh-e5-LUv"/>
@@ -232,33 +347,22 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-DM-vT1" userLabel="Distortion" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
-                                                <frame key="frameInset" minX="192" width="30" height="107"/>
-                                                <color key="tintColor" red="0.44220945779999998" green="0.74168592339999995" blue="0.1467233356" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="UHk-Kg-Ut9"/>
-                                                    <constraint firstAttribute="height" constant="30" id="d8L-ZS-u09"/>
-                                                </constraints>
-                                                <connections>
-                                                    <action selector="didChangeDistortion:" destination="BYZ-38-t0r" eventType="valueChanged" id="MDE-ug-Wih"/>
-                                                </connections>
-                                            </slider>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="aLh-4i-RqU" firstAttribute="leading" secondItem="J8Q-kY-LTg" secondAttribute="trailing" constant="53" id="0yS-gL-aIC"/>
                                             <constraint firstAttribute="width" constant="260" id="1W5-YN-pVN"/>
-                                            <constraint firstItem="aLh-4i-RqU" firstAttribute="top" secondItem="3G0-8u-b9W" secondAttribute="top" constant="2" id="53q-zX-5sU"/>
-                                            <constraint firstItem="J8Q-kY-LTg" firstAttribute="leading" secondItem="3G0-8u-b9W" secondAttribute="leading" constant="14" id="73X-gg-ldc"/>
+                                            <constraint firstItem="yQv-O2-thq" firstAttribute="top" secondItem="3G0-8u-b9W" secondAttribute="top" id="2TW-5Z-Vkn"/>
                                             <constraint firstAttribute="bottom" secondItem="lw6-XW-nD6" secondAttribute="bottom" constant="-1" id="7Ld-wv-ZMm"/>
-                                            <constraint firstItem="sdk-DM-vT1" firstAttribute="top" secondItem="3G0-8u-b9W" secondAttribute="top" constant="2" id="Kpv-TO-dfp"/>
+                                            <constraint firstItem="ltI-Gz-qVc" firstAttribute="centerX" secondItem="yQv-O2-thq" secondAttribute="centerX" id="GWf-ZE-k0F"/>
+                                            <constraint firstItem="yQv-O2-thq" firstAttribute="leading" secondItem="H05-k9-K8L" secondAttribute="trailing" constant="48.5" id="Hcy-Gy-PuT"/>
+                                            <constraint firstItem="lw6-XW-nD6" firstAttribute="centerX" secondItem="NqZ-0x-zro" secondAttribute="centerX" id="KA3-rw-Se3"/>
+                                            <constraint firstItem="aQo-iQ-nrd" firstAttribute="centerX" secondItem="H05-k9-K8L" secondAttribute="centerX" id="Kxi-mx-8bt"/>
+                                            <constraint firstItem="NqZ-0x-zro" firstAttribute="top" secondItem="3G0-8u-b9W" secondAttribute="top" id="LAE-dj-HwO"/>
+                                            <constraint firstItem="H05-k9-K8L" firstAttribute="leading" secondItem="3G0-8u-b9W" secondAttribute="leading" constant="21" id="TE9-IK-Qpr"/>
+                                            <constraint firstItem="NqZ-0x-zro" firstAttribute="leading" secondItem="yQv-O2-thq" secondAttribute="trailing" constant="70" id="Y43-CC-Wyi"/>
                                             <constraint firstAttribute="bottom" secondItem="ltI-Gz-qVc" secondAttribute="bottom" constant="-1" id="aBh-ZF-4S3"/>
-                                            <constraint firstItem="J8Q-kY-LTg" firstAttribute="top" secondItem="3G0-8u-b9W" secondAttribute="top" constant="2" id="bFd-ZJ-83J"/>
                                             <constraint firstAttribute="bottom" secondItem="aQo-iQ-nrd" secondAttribute="bottom" constant="-1" id="dkl-Ou-Nax"/>
-                                            <constraint firstItem="lw6-XW-nD6" firstAttribute="centerX" secondItem="sdk-DM-vT1" secondAttribute="centerX" id="e6Z-VC-Tga"/>
                                             <constraint firstAttribute="height" constant="126" id="fg6-12-Wgb"/>
-                                            <constraint firstItem="aQo-iQ-nrd" firstAttribute="centerX" secondItem="J8Q-kY-LTg" secondAttribute="centerX" id="pJT-5K-3D1"/>
-                                            <constraint firstItem="sdk-DM-vT1" firstAttribute="leading" secondItem="aLh-4i-RqU" secondAttribute="trailing" constant="68" id="rus-wY-0mc"/>
-                                            <constraint firstItem="ltI-Gz-qVc" firstAttribute="centerX" secondItem="aLh-4i-RqU" secondAttribute="centerX" id="xlq-NZ-hDD"/>
+                                            <constraint firstItem="H05-k9-K8L" firstAttribute="top" secondItem="3G0-8u-b9W" secondAttribute="top" id="qX6-fQ-1vm"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -314,18 +418,15 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="amplitudeSlider" destination="gzj-ak-Pyw" id="q0Z-aj-qHp"/>
+                        <outlet property="amplitudeSlider" destination="xkG-sK-0cv" id="bRQ-bc-u3A"/>
                         <outlet property="currentOctaveLabel" destination="xeY-ei-A5X" id="16T-oQ-ggE"/>
-                        <outlet property="cutoffSlider" destination="J8Q-kY-LTg" id="2y5-ZS-xmZ"/>
-                        <outlet property="distortionSlider" destination="sdk-DM-vT1" id="O4g-56-KmX"/>
-                        <outlet property="fineSlider" destination="wGp-Cp-gSi" id="Axb-MX-wFu"/>
-                        <outlet property="pitchSlider" destination="9xI-I2-ky4" id="Lhv-jS-KIl"/>
-                        <outlet property="resonanceSlider" destination="aLh-4i-RqU" id="Gow-OY-Edb"/>
+                        <outlet property="fineSlider" destination="xHO-D4-QWX" id="1Zb-Gd-doD"/>
+                        <outlet property="pitchSlider" destination="pWs-pf-eaK" id="VJ4-Xc-EEn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112.50000000000001" y="107.24637681159422"/>
+            <point key="canvasLocation" x="111.99400299850076" y="106.40000000000001"/>
         </scene>
     </scenes>
 </document>

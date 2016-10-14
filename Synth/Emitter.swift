@@ -32,9 +32,10 @@ class Emitter {
     private(set) var oscillators = [AKTableType:AKOscillator]()
     private var waveform : AKTableType
     
-    init(base:Double, octave: Int, waveform: AKTableType = .square) {
+    init(base:Double, octave: Int, waveform: AKTableType = .square, halfSteps: Double) {
         self.baseFrequency = base
         self.octave = octave
+        self.halfStepsModifier = halfSteps
         
         oscillators[AKTableType.square] = AKOscillator(waveform: AKTable(.square), amplitude: 0)
         oscillators[AKTableType.triangle] = AKOscillator(waveform: AKTable(.triangle), amplitude: 0)

@@ -13,11 +13,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var pitchSlider: SynthVerticalSlider!
     @IBOutlet weak var fineSlider: SynthVerticalSlider!
-    @IBOutlet weak var cutoffSlider: SynthVerticalSlider!
-    @IBOutlet weak var resonanceSlider: SynthVerticalSlider!
-    @IBOutlet weak var distortionSlider: SynthVerticalSlider!
     @IBOutlet weak var amplitudeSlider: SynthVerticalSlider!
-
+    
     @IBOutlet weak var currentOctaveLabel: UILabel!
     
     var mixer : AKMixer?
@@ -30,8 +27,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        previousPitchModifier = Double(self.pitchSlider.value)
-        previousFinePitchModifier = Double(self.fineSlider.value)
+        previousPitchModifier = self.pitchSlider.value
+        previousFinePitchModifier = self.fineSlider.value
         
         setupMixer()
         setupEmitter()
@@ -50,9 +47,13 @@ class ViewController: UIViewController {
     }
     
     func setupEmitter() {
-        emitter = Emitter(base: 61.74, octave: 2)
+        emitter = Emitter(base: 61.74,
+                          octave: 2,
+                          waveform: AKTableType.square,
+                          halfSteps: 0)
         if let oscillators = emitter?.oscillators {
             for (_, oscillator) in oscillators {
+                oscillator.amplitude = amplitudeSlider.value
                 mixer?.connect(oscillator)
             }
         }
@@ -93,18 +94,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didChangePitch(_ sender: AnyObject) {
-        if let slider = sender as? UISlider {
-            let currentModifier = Double(slider.value)
-            emitter?.halfStepsModifier += (currentModifier - previousPitchModifier)
-            previousPitchModifier = currentModifier
+        if let slider = sender as? SynthVerticalSlider {
+            emitter?.halfStepsModifier += (slider.value - previousPitchModifier)
+            previousPitchModifier = slider.value
         }
     }
     
     @IBAction func didChangeFinePitch(_ sender: AnyObject) {
-        if let slider = sender as? UISlider {
-            let currentModifier = Double(slider.value)
-            emitter?.halfStepsModifier += (currentModifier - previousFinePitchModifier)
-            previousFinePitchModifier = currentModifier
+        if let slider = sender as? SynthVerticalSlider {
+            emitter?.halfStepsModifier += (slider.value - previousFinePitchModifier)
+            previousFinePitchModifier = slider.value
         }
     }
     
@@ -117,7 +116,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didChangeCutoff(_ sender: AnyObject) {
-        if let slider = sender as? UISlider {
+        if let slider = sender as? SynthVerticalSlider {
             let max = 10000.0
             let total = max / 24.0
             self.filter?.cutoffFrequency = slider.value * total
@@ -125,7 +124,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didChangeResonance(_ sender: AnyObject) {
-        if let slider = sender as? UISlider {
+        if let slider = sender as? SynthVerticalSlider {
             let max = 2.0
             let total = max / 24.0
             self.filter?.resonance = slider.value * total
@@ -133,7 +132,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didChangeDistortion(_ sender: AnyObject) {
-        if let slider = sender as? UISlider {
+        if let slider = sender as? SynthVerticalSlider {
             let max = 4.0
             let total = max / 24.0
             self.filter?.distortion = slider.value * total
@@ -141,8 +140,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didChangeAmplitude(_ sender: AnyObject) {
-        if let slider = sender as? UISlider {
-            emitter?.oscillator()?.amplitude = Double(slider.value)
+        if let slider = sender as? SynthVerticalSlider {
+            emitter?.oscillator()?.amplitude = slider.value
         }
     }
     
