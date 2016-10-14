@@ -18,6 +18,10 @@ class SynthVerticalSlider : UISlider {
     override func layoutSubviews() {
         super.layoutSubviews()
         rotate()
+        var frame = self.frame
+        frame.size.height = self.frame.width
+        frame.size.width = self.frame.height
+        self.frame = frame
     }
     
     override func prepareForInterfaceBuilder() {
