@@ -9,46 +9,14 @@
 import UIKit
 import AudioKit
 
-extension UISlider {
-    func flip() {
-        self.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
-    }
-}
-
 class ViewController: UIViewController {
 
-    @IBOutlet weak var pitchSlider: UISlider! {
-        didSet {
-            pitchSlider.flip()
-        }
-    }
-    @IBOutlet weak var fineSlider: UISlider! {
-        didSet {
-            fineSlider.flip()
-        }
-    }
-    @IBOutlet weak var cutoffSlider: UISlider! {
-        didSet {
-            cutoffSlider.flip()
-        }
-    }
-    
-    @IBOutlet weak var resonanceSlider: UISlider! {
-        didSet {
-            resonanceSlider.flip()
-        }
-    }
-    
-    @IBOutlet weak var distortionSlider: UISlider! {
-        didSet {
-            distortionSlider.flip()
-        }
-    }
-    @IBOutlet weak var amplitudeSlider: UISlider! {
-        didSet {
-            amplitudeSlider.flip()
-        }
-    }
+    @IBOutlet weak var pitchSlider: SynthVerticalSlider!
+    @IBOutlet weak var fineSlider: SynthVerticalSlider!
+    @IBOutlet weak var cutoffSlider: SynthVerticalSlider!
+    @IBOutlet weak var resonanceSlider: SynthVerticalSlider!
+    @IBOutlet weak var distortionSlider: SynthVerticalSlider!
+    @IBOutlet weak var amplitudeSlider: SynthVerticalSlider!
 
     @IBOutlet weak var currentOctaveLabel: UILabel!
     

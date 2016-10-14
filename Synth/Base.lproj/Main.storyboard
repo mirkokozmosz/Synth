@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -44,7 +44,7 @@
                                             <action selector="didChangeWaveform:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wal-Ar-yTm"/>
                                         </connections>
                                     </segmentedControl>
-                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-I2-ky4" userLabel="Pitch Slider">
+                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="9xI-I2-ky4" userLabel="Pitch Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
                                         <frame key="frameInset" minX="161" minY="20" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="0Xo-Vq-Sml"/>
@@ -54,7 +54,7 @@
                                             <action selector="didChangePitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="pGk-DT-6ct"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="wGp-Cp-gSi" userLabel="Fine Slider">
+                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="wGp-Cp-gSi" userLabel="Fine Slider" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
                                         <frame key="frameInset" minX="280" minY="20" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="Ygi-Wb-pUv"/>
@@ -148,7 +148,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="24" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="J8Q-kY-LTg" userLabel="Cutoff">
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="24" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="J8Q-kY-LTg" userLabel="Cutoff" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
                                         <frame key="frameInset" minX="-2" minY="26" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="1F1-0m-bjT"/>
@@ -158,7 +158,7 @@
                                             <action selector="didChangeCutoff:" destination="BYZ-38-t0r" eventType="valueChanged" id="e42-hx-sD7"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="aLh-4i-RqU" userLabel="Resonance">
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="aLh-4i-RqU" userLabel="Resonance" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
                                         <frame key="frameInset" minX="115" minY="26" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Yt3-2K-kVh"/>
@@ -168,7 +168,7 @@
                                             <action selector="didChangeResonance:" destination="BYZ-38-t0r" eventType="valueChanged" id="KR2-av-YBe"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-DM-vT1" userLabel="Distortion">
+                                    <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-DM-vT1" userLabel="Distortion" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
                                         <frame key="frameInset" minX="226" minY="26" width="100" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="UHk-Kg-Ut9"/>
@@ -228,7 +228,7 @@
                                     <constraint firstItem="aQo-iQ-nrd" firstAttribute="top" secondItem="J8Q-kY-LTg" secondAttribute="bottom" constant="75" id="w65-nB-aH1"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-ak-Pyw">
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-ak-Pyw" customClass="SynthVerticalSlider" customModule="Synth" customModuleProvider="target">
                                 <frame key="frameInset" minX="619" minY="245" width="118" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="Ggu-s4-J90"/>
