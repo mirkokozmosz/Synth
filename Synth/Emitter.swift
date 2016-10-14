@@ -9,7 +9,7 @@
 import Foundation
 import AudioKit
 
-class Emitter {
+class Emitter : AKPolyphonicNode, AKMIDIListener, StepSequencerDelegate {
     var baseFrequency : Double = 0 {
         didSet {
             debugPrint("Setting baseFrequency to \(baseFrequency)")
@@ -32,8 +32,13 @@ class Emitter {
     private(set) var oscillators = [AKTableType:AKOscillator]()
     private var waveform : AKTableType
     
-    init(base:Double, octave: Int, waveform: AKTableType = .square, halfSteps: Double) {
+    let output = AKMixer()
+    
+    var sequencer: Sequencer?
+    
+    init(base:Double, octave: Int, waveform: AKTableType = .square, halfSteps: Double, amplitude: Double) {
         self.baseFrequency = base
+    
         self.octave = octave
         self.halfStepsModifier = halfSteps
         
@@ -41,8 +46,19 @@ class Emitter {
         oscillators[AKTableType.triangle] = AKOscillator(waveform: AKTable(.triangle), amplitude: 0)
         
         self.waveform = waveform
+        
+        super.init() // Don't ask...
         recalculateFrequency()
         self.oscillator()?.start()
+        
+        for (_, oscillator) in oscillators {
+            oscillator.amplitude = amplitude
+            output.connect(oscillator)
+        }
+        
+        sequencer = Sequencer(emitter: self)
+
+        output.start()
     }
     
     func oscillator() -> AKOscillator? {
@@ -71,4 +87,60 @@ class Emitter {
             oscillator.frequency = frequency
         }
     }
+    
+    func play() {
+        sequencer?.play()
+    }
+    
+    func stop() {
+        sequencer?.stop()
+    }
+    
+//Mark: AKNode
+    
+    override var avAudioNode: AVAudioNode {
+        get {
+            return output.avAudioNode
+        }
+        set(x) {
+            output.avAudioNode = avAudioNode
+        }
+    }
+    
+    override func addConnectionPoint(_ node: AKNode) {
+        output.addConnectionPoint(node)
+    }
+    
+// MARK: AKMIDIListener
+    func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
+        debugPrint("Received MIDI note on")
+    }
+    
+    func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
+        debugPrint("Received MIDI note off")
+    }
+    
+//Mark: AKPolyphonicNode
+    override func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity) {
+        debugPrint("play")
+        if(steps[noteNumber]) {
+            oscillator()?.play()
+        }
+        else {
+            oscillator()?.stop()
+        }
+    }
+    
+    override func stop(noteNumber: MIDINoteNumber) {
+        //debugPrint("stop")
+        //oscillator()?.stop()
+    }
+    
+    var steps = [Bool]()
+    
+//MARK: StepSequencerDelegate
+    func didChangeStepStatus(_ stepIndex: Int, enabled: Bool) {
+        steps[stepIndex] = enabled
+    }
+
 }

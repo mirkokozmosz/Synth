@@ -16,6 +16,7 @@
 		7A7E2CD31DAF7C8800924E7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7E2CD21DAF7C8800924E7C /* Assets.xcassets */; };
 		7A7E2CD61DAF7C8800924E7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7E2CD41DAF7C8800924E7C /* LaunchScreen.storyboard */; };
 		7A7E2CE11DAF7C8800924E7C /* SynthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7E2CE01DAF7C8800924E7C /* SynthTests.swift */; };
+		7ACC75E81DB1048100D553E8 /* Sequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC75E71DB1048100D553E8 /* Sequencer.swift */; };
 		959A29BBBB26D5A8DAD89267 /* libPods-Synth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD402E5C88584D5D6E0EB401 /* libPods-Synth.a */; };
 		A0D32170886D9B8C3126D1CC /* libPods-SynthTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC85CDDB8DD4C6191CCA9C84 /* libPods-SynthTests.a */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		7A7E2CDC1DAF7C8800924E7C /* SynthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7E2CE01DAF7C8800924E7C /* SynthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthTests.swift; sourceTree = "<group>"; };
 		7A7E2CE21DAF7C8800924E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ACC75E71DB1048100D553E8 /* Sequencer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sequencer.swift; sourceTree = "<group>"; };
 		AC85CDDB8DD4C6191CCA9C84 /* libPods-SynthTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SynthTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9C24229D6ACC07B5A9D888 /* Pods-Synth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Synth.release.xcconfig"; path = "Pods/Target Support Files/Pods-Synth/Pods-Synth.release.xcconfig"; sourceTree = "<group>"; };
 		BB68CE7F329612FD7DDEDC2B /* Pods-SynthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SynthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SynthTests/Pods-SynthTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				7A7E2CD71DAF7C8800924E7C /* Info.plist */,
 				7A7E2CCF1DAF7C8800924E7C /* Synth.xcdatamodeld */,
 				02563D271DAFCB4300583696 /* Emitter.swift */,
+				7ACC75E71DB1048100D553E8 /* Sequencer.swift */,
 			);
 			path = Synth;
 			sourceTree = "<group>";
@@ -203,6 +206,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = CHG49WKQ27;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					7A7E2CDB1DAF7C8800924E7C = {
 						CreatedOnToolsVersion = 8.0;
@@ -353,6 +361,7 @@
 				7A7E2CCB1DAF7C8800924E7C /* ViewController.swift in Sources */,
 				7A7E2CC91DAF7C8800924E7C /* AppDelegate.swift in Sources */,
 				02563D281DAFCB4300583696 /* Emitter.swift in Sources */,
+				7ACC75E81DB1048100D553E8 /* Sequencer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
